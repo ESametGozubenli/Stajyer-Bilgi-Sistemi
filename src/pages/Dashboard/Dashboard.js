@@ -11,7 +11,8 @@ import {
 } from "date-fns";
 
 import DataContext from "../../context/dataContext";
-
+import StatusChart from "./StatusChart";
+import MonthlyChart from "./MonthlyChart";
 function Dashboard() {
   const { formList } = useContext(DataContext);
 
@@ -66,6 +67,19 @@ function Dashboard() {
 
         <li>Tamamlanan:{pasiveIntern}</li>
       </ul>
+
+      <StatusChart 
+          data={{
+          totalIntern,
+          activeIntern,
+          startSoon,
+          pasiveIntern
+        }}
+      />
+
+      <MonthlyChart 
+         formList={formList}
+      />
     </div>
   );
 }
