@@ -1,38 +1,161 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 .App {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.header {
   text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header h1 {
+  color: white;
+  font-weight: 700;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header h6 {
+  color: #a7acb3;
+}
+.saveContainer {
+  text-align: center;
+  background-color: #fff;
+  height: 100%;
+  border-radius: 15px;
+  padding: 3% 3% 3% 3%;
+  width: 70%;
+}
+.saveContainer h3 {
+  background: linear-gradient(to right, #764ba2, #667eea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  padding-top: 5%;
+  padding-bottom: 1%;
+}
+.saveContainer p {
+  color: #64748b;
+  font-size: 18px;
+  font-weight: 500;
+}
+.saveContainer label {
+  font-weight: bold;
+  text-align: left;
+  padding-bottom: 2%;
+}
+.saveContainer input {
+  border: 1px solid rgb(189, 185, 185);
+  border-radius: 9px;
+  height: 35px;
+  padding-left: 5px;
+  margin-bottom: 10px;
+}
+.formDiv {
+  margin-left: 50px;
+}
+.form-group {
   display: flex;
   flex-direction: column;
+  padding-bottom: 3%;
+}
+.date-group {
+  border: 1px solid rgb(189, 185, 185);
+  border-radius: 9px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 3%;
+}
+.date-group input {
+  border: transparent;
+}
+.date-group input:focus {
+  outline: none;
+}
+.react-datepicker__input-container {
+  height: 35px;
 }
 
-.App-link {
-  color: #61dafb;
+.file-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input[type="file"]::file-selector-button {
+  background-color: white;
+  font-weight: 500;
+  border: transparent;
+  padding: 6px 12px;
+}
+.saveButton {
+  margin-left: 12%;
+  border: transparent;
+  border-radius: 9px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  height: 35px;
+  background: linear-gradient(to right, #764ba2, #667eea);
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 2%;
+  width: 100%;
+}
+
+.saveButton:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 4px 4px 10px,
+    rgba(255, 255, 255, 0.4) 0px 0px 8px;
+}
+.infoContainer {
+  background-color: #fff;
+  border-radius: 15px;
+  height: 300px;
+  margin-bottom: 6%;
+  margin-right: 100px;
+  padding-left: 35px;
+}
+.infoContainer li {
+  font-weight: bold;
+}
+.infoContainer li::marker {
+  font-size: 1.5em;
+  color: #764ba2;
+}
+.infoContainer h5 {
+  background: linear-gradient(to right, #764ba2, #667eea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 20px;
+  padding-top: 5px;
+  font-weight: 500;
+}
+.infoContainer p {
+  color: #536174;
+  font-weight: 500;
+}
+
+.linkButton {
+  background-color: #fff;
+  border-radius: 15px;
+  height: 110px;
+  margin-left: 5%;
+}
+.linkButton button {
+  width: 90%;
+  margin-top: 40px;
+  margin-left: 20px;
+  background-color: transparent;
+  border-color: #7388e6;
+  color: #667eea;
+  font-weight: 500;
+  border-radius: 8px;
+  height: 44%;
 }
