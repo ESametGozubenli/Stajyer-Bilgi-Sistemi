@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import DataContext from "../../context/dataContext";
@@ -24,6 +24,7 @@ const validationSchema = Yup.object({
 
 function SavePage() {
   const { formList, setFormList } = useContext(DataContext);
+  const navigate = useNavigate();
 
   const initialValues = {
     name: "",
@@ -50,7 +51,7 @@ function SavePage() {
         <h6>Stajyer Bilgi Giriş Sistemi</h6>
       </div>
 
-      <div className="row " style={{display:"flex",paddingLeft:10}}>
+      <div className="row " style={{ display: "flex", paddingLeft: 10 }}>
         <div className="col-8 ">
           <div className="saveContainer">
             <h3>Yeni Stajyer Kaydı</h3>
@@ -152,7 +153,7 @@ function SavePage() {
           </div>
         </div>
 
-        <div className="col-4 " >
+        <div className="col-4 ">
           <div className="row infoContainer">
             <h5>
               {" "}
@@ -169,12 +170,10 @@ function SavePage() {
             </ul>
           </div>
           <div className="row linkButton">
-            <Link to="/dashboard">
-              <button>
-                <LuChartColumnIncreasing style={{ marginRight: 8 }} />{" "}
-                Dashboard'a Git
-              </button>
-            </Link>
+            <button onClick={() => navigate("/logIn")}>
+              <LuChartColumnIncreasing style={{ marginRight: 8 }} /> Dashboard'a
+              Git
+            </button>
           </div>
         </div>
       </div>

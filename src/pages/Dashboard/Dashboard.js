@@ -1,30 +1,71 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
-import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
+import {
+  format,
+  formatDistance,
+  isBefore,
+  isAfter,
+  isWithinInterval,
+  addDays,
+  parseISO,
+} from "date-fns";
 
 import DataContext from "../../context/dataContext";
 
 function Dashboard() {
   const { formList } = useContext(DataContext);
+
+  const navigate = useNavigate();
+  const today = new Date();
+
+  //tüm kayıtlar
+  const totalIntern = formList.length;
+
+  //yaklaşan
+  const startSoon = formList.filter((item) => {
+    const start = new Date(item.startDate);
+    return isAfter(start, today) && isBefore(start, addDays(today, 7)); //ture-false ile kontrol ediyor
+  }).length;
+
+  //aktif
+
+  const activeIntern = formList.filter((item) => {
+    const start = new Date(item.startDate);
+    start.setHours(0, 0, 0, 0);
+
+    const finish = new Date(item.finishDate);
+    finish.setHours(23, 59, 59, 999);
+
+    return isWithinInterval(today, { start, end: finish });
+  }).length;
+
+  //pasif
+  const pasiveIntern = formList.filter((item) => {
+    const finish = new Date(item.finishDate);
+    return isBefore(finish, today);
+  }).length;
+
   return (
     <div>
+      <header>
+        <div className="head">
+          <h1>Hexaops Dashboard</h1>
+          <p>Stajyer yönetim sistemi genel görünümü</p>
+        </div>
+        <nav>
+          <button onClick={() => navigate("/")}>Forma Dön</button>
+          <button onClick={() => navigate("/logIn")}>Çıkış</button>
+        </nav>
+      </header>
+      {console.log(activeIntern)}{" "}
       <ul>
-        {formList.map((item) => (
-          <li key={item.id}>
-            {item.name} {item.surname}{" "}
-            {item.startDate
-              ? format(new Date(item.startDate), "dd.MM.yyyy")
-              : ""}{" "}
-            {item.finishDate
-              ? format(new Date(item.finishDate), "dd.MM.yyyy")
-              : ""}{" "}
-            {item.fileName}
-          </li>
-        ))}
+        <li>Toplam stajyer:{totalIntern}</li>
+        <li>Aktif stajyer:{activeIntern}</li>
+
+        <li>Yaklaşan:{startSoon}</li>
+
+        <li>Tamamlanan:{pasiveIntern}</li>
       </ul>
-      <Link to="/">
-        <button>Forma Dön</button>
-      </Link>
     </div>
   );
 }
