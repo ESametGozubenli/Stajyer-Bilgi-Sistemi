@@ -18,7 +18,7 @@ function LoginPage() {
     const onSubmit = (values) =>{
         // Demo bilgileri
         if (values.userName === "hexaops" && values.password === "admin123") {
-          navigate("/Dashboard"); // başka sayfaya yönlendirme
+          navigate("/dashboard"); // başka sayfaya yönlendirme
         }else{
           alert("Kullanıcı adı veya şifre yanlış")
         }
@@ -50,7 +50,7 @@ function LoginPage() {
           <p>Kullanıcı Adı: hexaops</p>
           <p>Şifre: admin123</p>
 
-          <button type='button' onClick={() => navigate("/StajyerKayıt")}>Stajyer kayıt sayfasına dön</button>
+          <button type='button' onClick={() => navigate("/")}>Stajyer kayıt sayfasına dön</button>
         </Form>
       </Formik>
     </div>

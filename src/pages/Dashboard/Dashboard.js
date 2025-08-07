@@ -16,7 +16,7 @@ function Dashboard() {
         ))}
       </ul>
       <Link to="/">
-        <button>Dashboard'a Git</button>
+        <button>Forma Dön</button>
       </Link>
     </div>
   );
