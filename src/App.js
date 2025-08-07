@@ -12,8 +12,8 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<SavePage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/logIn" element={<LoginPage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </Router>
       </DataProvider>

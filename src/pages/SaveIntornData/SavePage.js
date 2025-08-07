@@ -169,7 +169,7 @@ function SavePage() {
             </ul>
           </div>
           <div className="row linkButton">
-            <Link to="/logIn">
+            <Link to="/dashboard">
               <button>
                 <LuChartColumnIncreasing style={{ marginRight: 8 }} />{" "}
                 Dashboard'a Git
