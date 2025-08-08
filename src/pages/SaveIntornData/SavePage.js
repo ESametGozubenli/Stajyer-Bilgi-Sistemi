@@ -20,6 +20,7 @@ const validationSchema = Yup.object({
   surname: Yup.string().required("Soyad gerekli"),
   startDate: Yup.date().required("Başlangıç tarihi gerekli"),
   finishDate: Yup.date().required("Bitiş tarihi gerekli"),
+  file: Yup.mixed().required("Dosya yüklemek zorunludur"),
 });
 
 function SavePage() {
@@ -39,6 +40,7 @@ function SavePage() {
       ...values,
       id: nanoid(),
       fileName: values.file?.name || "",
+      createdAt: new Date().toISOString(),
     };
     setFormList([...formList, newForm]);
     resetForm();
@@ -62,7 +64,7 @@ function SavePage() {
               onSubmit={handleSubmit}
               validationSchema={validationSchema}
             >
-              {({ setFieldValue, values }) => (
+              {({ setFieldValue, setFieldTouched, values }) => (
                 <Form>
                   <div className="row ">
                     <div className="col-5 formDiv">
@@ -74,6 +76,7 @@ function SavePage() {
                           name="name"
                           placeholder="Adınızı girin"
                         />
+                        <ErrorMessage name="name" component="div" />
                       </div>
                     </div>
                     <div className="col-5">
@@ -85,6 +88,7 @@ function SavePage() {
                           name="surname"
                           placeholder="Soyadınızı girin"
                         />
+                        <ErrorMessage name="surname" component="div" />
                       </div>
                     </div>
                   </div>
@@ -98,13 +102,16 @@ function SavePage() {
                           <DatePicker
                             selected={values.startDate}
                             className="datePicker-custom"
-                            onChange={(date) =>
-                              setFieldValue("startDate", date)
-                            }
+                            onChange={(date) => {
+                              setFieldValue("startDate", date);
+                              setFieldTouched("startDate", true);
+                            }}
+                            onBlur={() => setFieldTouched("startDate", true)}
                             dateFormat="dd.MM.yyyy"
                             placeholderText=" Tarih seçin"
                           />
                         </div>
+                        <ErrorMessage name="startDate" component="div" />
                       </div>
                     </div>
                     <div className="col-5">
@@ -114,13 +121,16 @@ function SavePage() {
                           <CiCalendarDate size={20} />
                           <DatePicker
                             selected={values.finishDate}
-                            onChange={(date) =>
-                              setFieldValue("finishDate", date)
-                            }
+                            onChange={(date) => {
+                              setFieldValue("finishDate", date);
+                              setFieldTouched("finishDate", true);
+                            }}
+                            onBlur={() => setFieldTouched("finishDate", true)}
                             dateFormat="dd.MM.yyyy"
                             placeholderText="Tarih seçin"
                           />
                         </div>
+                        <ErrorMessage name="finishDate" component="div" />
                       </div>
                     </div>
                   </div>
@@ -136,7 +146,9 @@ function SavePage() {
                           onChange={(e) => {
                             setFieldValue("file", e.currentTarget.files[0]);
                           }}
+                          onBlur={() => setFieldTouched("file", true)}
                         />
+                        <ErrorMessage name="file" component="div" />
                       </div>
                     </div>
                   </div>

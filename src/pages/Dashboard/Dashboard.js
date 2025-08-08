@@ -1,5 +1,13 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import DataContext from "../../context/dataContext";
+
+import HeaderDashboard from "./HeaderDashboard";
+import InternCounter from "./InternCounter";
+import InternList from "./InternList";
+
+import StatusChart from "./StatusChart";
+import MonthlyChart from "./MonthlyChart";
+
 import {
   format,
   formatDistance,
@@ -7,16 +15,10 @@ import {
   isAfter,
   isWithinInterval,
   addDays,
-  parseISO,
 } from "date-fns";
 
-import DataContext from "../../context/dataContext";
-import StatusChart from "./StatusChart";
-import MonthlyChart from "./MonthlyChart";
 function Dashboard() {
   const { formList } = useContext(DataContext);
-
-  const navigate = useNavigate();
   const today = new Date();
 
   //tüm kayıtlar
@@ -45,41 +47,23 @@ function Dashboard() {
     const finish = new Date(item.finishDate);
     return isBefore(finish, today);
   }).length;
-
   return (
-    <div>
-      <header>
-        <div className="head">
-          <h1>Hexaops Dashboard</h1>
-          <p>Stajyer yönetim sistemi genel görünümü</p>
-        </div>
-        <nav>
-          <button onClick={() => navigate("/")}>Forma Dön</button>
-          <button onClick={() => navigate("/logIn")}>Çıkış</button>
-        </nav>
-      </header>
-      {console.log(activeIntern)}{" "}
-      <ul>
-        <li>Toplam stajyer:{totalIntern}</li>
-        <li>Aktif stajyer:{activeIntern}</li>
+    <div className="dashboardContainer">
+      <HeaderDashboard />
+      <InternCounter />
 
-        <li>Yaklaşan:{startSoon}</li>
-
-        <li>Tamamlanan:{pasiveIntern}</li>
-      </ul>
-
-      <StatusChart 
-          data={{
+      <StatusChart
+        data={{
           totalIntern,
           activeIntern,
           startSoon,
-          pasiveIntern
+          pasiveIntern,
         }}
       />
 
-      <MonthlyChart 
-         formList={formList}
-      />
+      <MonthlyChart formList={formList} />
+        
+      <InternList />
     </div>
   );
 }

@@ -159,3 +159,128 @@ input[type="file"]::file-selector-button {
   border-radius: 8px;
   height: 44%;
 }
+/* dashboard css */
+.dashboardHeader {
+  display: flex;
+  margin-top: 5%;
+  justify-content: space-between;
+  width: 100%;
+}
+.companyHeader h2 {
+  color: #fff;
+}
+.companyHeader p {
+  color: #bdbcbc;
+  font-size: 16px;
+  font-weight: 500;
+}
+.navButtons {
+  display: flex;
+  align-items: center;
+}
+.formButton {
+  height: 48%;
+  padding-left: 15px;
+  padding-right: 14px;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 0.5px solid #fff;
+  color: white;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+}
+.logInButton {
+  margin-left: 20px;
+  height: 50%;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 10px;
+  border-color: rgba(143, 87, 130, 0.7);
+  background-color: rgba(167, 65, 144, 0.7);
+  color: white;
+  font-weight: 500;
+}
+
+.dashboardContainer {
+  width: 60%;
+}
+/* internCounter */
+p {
+  margin-bottom: 0 !important;
+}
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.card {
+  width: 100%;
+  padding: 5% 1% 8% 8%;
+  border-radius: 15px !important;
+}
+
+.cardContent p {
+  padding-top: 20px;
+  color: #837f7f;
+  font-size: 14px;
+  font-weight: 500;
+}
+.totalIntern {
+  display: flex;
+  justify-content: space-between;
+  color: #8b5cf6;
+  padding-right: 20px;
+}
+.activeIntern {
+  display: flex;
+  justify-content: space-between;
+  color: #10b981;
+  padding-right: 20px;
+}
+.startSoon {
+  display: flex;
+  justify-content: space-between;
+  color: #f59e0b;
+  padding-right: 20px;
+}
+
+.pasiveIntern {
+  display: flex;
+  justify-content: space-between;
+  color: #ef4444;
+  padding-right: 20px;
+}
+
+/* Intern List */
+.listContainer {
+  margin-top: 2rem;
+  background-color: #fff;
+  border-radius: 15px;
+  height: auto;
+  padding: 2% 4% 3% 2%;
+}
+.listContainer h5 {
+  color: #667eea;
+}
+.listContainer p {
+  color: #837f7f;
+  font-size: 15px;
+  font-weight: 500;
+}
+.list ul {
+  padding-left: 0 !important;
+}
+.topBar {
+  display: flex;
+  border-bottom: 2px solid #c2bfbf;
+}
+.topBar p {
+  font-weight: 700;
+}
+.listItem{
+  display: flex;
+}
