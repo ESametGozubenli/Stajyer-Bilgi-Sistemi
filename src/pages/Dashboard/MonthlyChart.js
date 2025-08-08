@@ -51,9 +51,9 @@ const MonthlyChart = ({ formList }) => {
   }, [formList]);
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-lg">
-      <h3 className="text-xl font-semibold text-gray-900 mb-2">Aylık Stajyer Dağılımı</h3>
-      <p className="text-gray-600 text-sm mb-6">Stajyerlerin başlangıç tarihlerine göre dağılımı</p>
+    <div className="chart-card">
+      <h3 className="chart-title">Aylık Stajyer Dağılımı</h3>
+      <p className="chart-subtitle">Stajyerlerin başlangıç tarihlerine göre dağılımı</p>
       <div className="h-80">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart 

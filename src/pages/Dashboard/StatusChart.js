@@ -36,10 +36,10 @@ const StatusChart = ({ data }) => {
   ];
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-lg">
-      <h3 className="text-xl font-semibold text-gray-900 mb-2">Stajyer Durumu</h3>
-      <p className="text-gray-600 text-sm mb-6">Mevcut stajyer durumlarının dağılımı</p>
-      <div className="h-80">
+    <div className="chart-card">
+      <h3 className="chart-title">Stajyer Durumu</h3>
+      <p className="chart-subtitle">Mevcut stajyer durumlarının dağılımı</p>
+      <div className="chart-wrapper">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart 
             data={chartData} 

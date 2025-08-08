@@ -51,18 +51,22 @@ function Dashboard() {
     <div className="dashboardContainer">
       <HeaderDashboard />
       <InternCounter />
+      
+      <div className="charts-container">
 
-      <StatusChart
+      <MonthlyChart formList={formList} />
+
+        <StatusChart
         data={{
           totalIntern,
           activeIntern,
           startSoon,
           pasiveIntern,
         }}
-      />
+      /> 
+        </div>
 
-      <MonthlyChart formList={formList} />
-        
+
       <InternList />
     </div>
   );
