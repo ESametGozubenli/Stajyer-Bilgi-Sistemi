@@ -30,7 +30,7 @@ function LoginPage() {
     
     return (
       <div>
-       <div className="header">
+       <div className="header-login">
         <h1>Hexaops</h1>
         <h6>Stajyer Bilgi Giriş Sistemi</h6>
       </div>
