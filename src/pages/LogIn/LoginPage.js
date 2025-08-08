@@ -29,6 +29,11 @@ function LoginPage() {
     }
     
     return (
+      <div>
+       <div className="header">
+        <h1>Hexaops</h1>
+        <h6>Stajyer Bilgi Giriş Sistemi</h6>
+      </div>
    <div className='login-container'>
     <div className='login-card'>
       <h2 className='form-title'>Giriş Yap</h2>
@@ -74,6 +79,7 @@ function LoginPage() {
     
         </Form>
       </Formik>
+    </div>
     </div>
     </div>
   );
