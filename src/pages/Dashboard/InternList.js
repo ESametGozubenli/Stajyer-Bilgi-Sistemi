@@ -8,6 +8,7 @@ import {
   isWithinInterval,
   addDays,
 } from "date-fns";
+import { tr } from "date-fns/locale"; // Türkçe locale
 
 function InternList() {
   const { formList } = useContext(DataContext);
@@ -76,14 +77,14 @@ function InternList() {
                     <div className="col-2">
                       <p>
                         {item.startDate
-                          ? format(new Date(item.startDate), "dd.MM.yyyy")
+                          ? format(new Date(item.startDate), "d MMM yyyy", { locale: tr })
                           : ""}
                       </p>
                     </div>
                     <div className="col-2">
                       <p>
                         {item.finishDate
-                          ? format(new Date(item.finishDate), "dd.MM.yyyy")
+                          ? format(new Date(item.finishDate), "d MMM yyyy", { locale: tr })
                           : ""}
                       </p>
                     </div>
@@ -96,7 +97,7 @@ function InternList() {
                     <div className="col-2">
                       <p>
                         {item.createdAt
-                          ? format(new Date(item.createdAt), "dd.MM.yyyy")
+                          ? format(new Date(item.createdAt), "d MMM yyyy", { locale: tr })
                           : ""}
                       </p>
                     </div>
