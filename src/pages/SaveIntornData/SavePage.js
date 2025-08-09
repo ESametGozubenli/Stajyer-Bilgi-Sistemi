@@ -9,11 +9,15 @@ import "../../App.css";
 //takvim kütüphanesi
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./customDatepicker.css";
 import { format } from "date-fns";
 //icon
 import { CiCalendarDate } from "react-icons/ci";
 import { LuChartColumnIncreasing } from "react-icons/lu";
 import { LuUsers } from "react-icons/lu";
+//alert
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Ad gerekli"),
@@ -44,7 +48,21 @@ function SavePage() {
     };
     setFormList([...formList, newForm]);
     resetForm();
+    Saved();
   };
+
+  //alert
+  const Saved = () =>
+    toast("Kaydınız Başarıyla Oluşturuldu", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
 
   return (
     <div className="container">
@@ -53,7 +71,7 @@ function SavePage() {
         <h6>Stajyer Bilgi Giriş Sistemi</h6>
       </div>
 
-      <div className="row " style={{ display: "flex", paddingLeft: 10 }}>
+      <div className="row ">
         <div className="col-8 ">
           <div className="saveContainer">
             <h3>Yeni Stajyer Kaydı</h3>
@@ -76,7 +94,11 @@ function SavePage() {
                           name="name"
                           placeholder="Adınızı girin"
                         />
-                        <ErrorMessage name="name" component="div" />
+                        <ErrorMessage
+                          name="name"
+                          component="div"
+                          className="errorMesage"
+                        />
                       </div>
                     </div>
                     <div className="col-5">
@@ -88,7 +110,11 @@ function SavePage() {
                           name="surname"
                           placeholder="Soyadınızı girin"
                         />
-                        <ErrorMessage name="surname" component="div" />
+                        <ErrorMessage
+                          name="surname"
+                          component="div"
+                          className="errorMesage"
+                        />
                       </div>
                     </div>
                   </div>
@@ -111,7 +137,11 @@ function SavePage() {
                             placeholderText=" Tarih seçin"
                           />
                         </div>
-                        <ErrorMessage name="startDate" component="div" />
+                        <ErrorMessage
+                          name="startDate"
+                          component="div"
+                          className="errorMesage"
+                        />
                       </div>
                     </div>
                     <div className="col-5">
@@ -128,9 +158,14 @@ function SavePage() {
                             onBlur={() => setFieldTouched("finishDate", true)}
                             dateFormat="dd.MM.yyyy"
                             placeholderText="Tarih seçin"
+                            calendarClassName="custom-calendar"
                           />
                         </div>
-                        <ErrorMessage name="finishDate" component="div" />
+                        <ErrorMessage
+                          name="finishDate"
+                          component="div"
+                          className="errorMesage"
+                        />
                       </div>
                     </div>
                   </div>
@@ -148,7 +183,11 @@ function SavePage() {
                           }}
                           onBlur={() => setFieldTouched("file", true)}
                         />
-                        <ErrorMessage name="file" component="div" />
+                        <ErrorMessage
+                          name="file"
+                          component="div"
+                          className="errorMesage"
+                        />
                       </div>
                     </div>
                   </div>
@@ -157,6 +196,18 @@ function SavePage() {
                       <button type="submit" className="saveButton">
                         Staj Kaydını Tamamla
                       </button>
+                      <ToastContainer
+                        position="top-right"
+                        autoClose={4000}
+                        hideProgressBar
+                        newestOnTop
+                        closeOnClick={false}
+                        rtl={false}
+                        pauseOnFocusLoss={false}
+                        draggable
+                        pauseOnHover
+                        theme="light"
+                      />
                     </div>
                   </div>
                 </Form>

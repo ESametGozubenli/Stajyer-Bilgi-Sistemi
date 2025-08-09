@@ -66,6 +66,10 @@ html {
   flex-direction: column;
   padding-bottom: 3%;
 }
+.errorMesage {
+  font-size: 14px;
+  color: #ef4444;
+}
 .date-group {
   border: 1px solid rgb(189, 185, 185);
   border-radius: 9px;
@@ -262,6 +266,8 @@ p {
   border-radius: 15px;
   height: auto;
   padding: 2% 4% 3% 2%;
+    margin-bottom: 2rem;
+
 }
 .listContainer h5 {
   color: #667eea;
@@ -281,11 +287,11 @@ p {
 .topBar p {
   font-weight: 700;
 }
-.listItem{
+.listItem {
   display: flex;
+gap: 8px;
+  padding: 1% 4% 1% 2%;
 }
-
-
 
 /* CHARTS CSS */
 /* Dashboard Charts Container */
@@ -310,7 +316,7 @@ p {
 .chart-title {
   font-size: 16px;
   font-weight: 600;
-  color:#8b5cf6;
+  color: #8b5cf6;
   margin-bottom: 8px;
 }
 
@@ -333,12 +339,12 @@ p {
     gap: 15px;
     padding: 0 15px;
   }
-  
+
   .chart-card {
     padding: 15px;
     min-height: 350px;
   }
-  
+
   .chart-wrapper {
     height: 250px;
   }
@@ -349,20 +355,20 @@ p {
     gap: 10px;
     padding: 0 10px;
   }
-  
+
   .chart-card {
     padding: 12px;
     min-height: 320px;
   }
-  
+
   .chart-wrapper {
     height: 220px;
   }
-  
+
   .chart-title {
     font-size: 14px;
   }
-  
+
   .chart-subtitle {
     font-size: 11px;
   }

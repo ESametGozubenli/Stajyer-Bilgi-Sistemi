@@ -22,7 +22,7 @@ function InternList() {
     if (isAfter(start, today) && isBefore(start, addDays(today, 7)))
       return "Yaklaşan Staj";
     if (isBefore(finish, today)) return " Tamamlandı";
-    return " Yaklaşan Staj";
+    return " Pasif";
   };
 
   return (

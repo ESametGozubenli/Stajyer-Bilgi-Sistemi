@@ -1,0 +1,64 @@
+/* customDatepicker.css */
+
+/* Takvim genel kutusu */
+.react-datepicker {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.12);
+  font-family: "Inter", sans-serif;
+  padding: 8px;
+}
+
+/* Başlık kısmı (Ay - Yıl) */
+.react-datepicker__header {
+  background: white;
+  border-bottom: none;
+  padding: 8px 0;
+}
+
+.react-datepicker__current-month {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+
+/* Gün isimleri */
+.react-datepicker__day-names {
+  margin-top: 4px;
+}
+
+.react-datepicker__day-name {
+  color: #9e9e9e;
+  font-size: 12px;
+}
+
+/* Gün hücreleri */
+.react-datepicker__day {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  margin: 2px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #000;
+}
+
+/* Hover efekti */
+.react-datepicker__day:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Seçili gün */
+.react-datepicker__day--selected {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Bugünün tarihi */
+.react-datepicker__day--today {
+    background-color: rgba(0, 0, 0, 0.05);
+
+}
+.react-datepicker__day--outside-month {
+  color: #929292 !important;
+  background-color: transparent !important;
+}

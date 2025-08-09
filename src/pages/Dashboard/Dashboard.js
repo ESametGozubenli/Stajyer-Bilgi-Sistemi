@@ -1,73 +1,81 @@
-import { useContext } from "react";
-import DataContext from "../../context/dataContext";
+import { useContext, useEffect } from "react";
+//router
+import { useLocation } from "react-router-dom";
 
+//context
+import DataContext from "../../context/dataContext";
+import StatusContext from "../../context/StatusContext";
+//conponents
 import HeaderDashboard from "./HeaderDashboard";
 import InternCounter from "./InternCounter";
 import InternList from "./InternList";
-
+//Charts
 import StatusChart from "./StatusChart";
 import MonthlyChart from "./MonthlyChart";
-
-import {
-  format,
-  formatDistance,
-  isBefore,
-  isAfter,
-  isWithinInterval,
-  addDays,
-} from "date-fns";
+//alert
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Dashboard() {
   const { formList } = useContext(DataContext);
-  const today = new Date();
 
-  //tüm kayıtlar
-  const totalIntern = formList.length;
+  const { today, totalIntern, startSoon, activeIntern, pasiveIntern } =
+    useContext(StatusContext);
 
-  //yaklaşan
-  const startSoon = formList.filter((item) => {
-    const start = new Date(item.startDate);
-    return isAfter(start, today) && isBefore(start, addDays(today, 7)); //ture-false ile kontrol ediyor
-  }).length;
+  const location = useLocation();
 
-  //aktif
+  useEffect(() => {
+    if (location.pathname === "/dashboard") {
+      toast(
+        <div>
+          <strong>Başarılı!</strong>
+          <div>Giriş yapıldı. Dashboard'a yönlendiriliyorsunuz...</div>
+        </div>,
+        {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+    }
+  }, [location]);
 
-  const activeIntern = formList.filter((item) => {
-    const start = new Date(item.startDate);
-    start.setHours(0, 0, 0, 0);
-
-    const finish = new Date(item.finishDate);
-    finish.setHours(23, 59, 59, 999);
-
-    return isWithinInterval(today, { start, end: finish });
-  }).length;
-
-  //pasif
-  const pasiveIntern = formList.filter((item) => {
-    const finish = new Date(item.finishDate);
-    return isBefore(finish, today);
-  }).length;
   return (
     <div className="dashboardContainer">
       <HeaderDashboard />
       <InternCounter />
-      
-      <div className="charts-container">
 
-      <MonthlyChart formList={formList} />
+      <div className="charts-container">
+        <MonthlyChart formList={formList} />
 
         <StatusChart
-        data={{
-          totalIntern,
-          activeIntern,
-          startSoon,
-          pasiveIntern,
-        }}
-      /> 
-        </div>
-
+          data={{
+            totalIntern,
+            activeIntern,
+            startSoon,
+            pasiveIntern,
+          }}
+        />
+      </div>
 
       <InternList />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 }

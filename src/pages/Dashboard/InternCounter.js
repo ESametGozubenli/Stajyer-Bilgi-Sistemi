@@ -1,49 +1,15 @@
 import { useContext } from "react";
 import DataContext from "../../context/dataContext";
+import StatusContext from "../../context/StatusContext";
 
-import {
-  format,
-  formatDistance,
-  isBefore,
-  isAfter,
-  isWithinInterval,
-  addDays,
-} from "date-fns";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { LuUsers } from "react-icons/lu";
 import { CiCalendar } from "react-icons/ci";
 import { IoDocumentTextOutline } from "react-icons/io5";
 
 function InternCounter() {
-  const { formList } = useContext(DataContext);
-
-  const today = new Date();
-  //tüm kayıtlar
-  const totalIntern = formList.length;
-
-  //yaklaşan
-  const startSoon = formList.filter((item) => {
-    const start = new Date(item.startDate);
-    return isAfter(start, today) && isBefore(start, addDays(today, 7)); //ture-false ile kontrol ediyor
-  }).length;
-
-  //aktif
-
-  const activeIntern = formList.filter((item) => {
-    const start = new Date(item.startDate);
-    start.setHours(0, 0, 0, 0);
-
-    const finish = new Date(item.finishDate);
-    finish.setHours(23, 59, 59, 999);
-
-    return isWithinInterval(today, { start, end: finish });
-  }).length;
-
-  //pasif
-  const pasiveIntern = formList.filter((item) => {
-    const finish = new Date(item.finishDate);
-    return isBefore(finish, today);
-  }).length;
+  const { today, totalIntern, startSoon, activeIntern, pasiveIntern } =
+    useContext(StatusContext);
 
   return (
     <div>
