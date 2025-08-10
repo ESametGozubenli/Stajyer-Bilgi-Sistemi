@@ -77,19 +77,31 @@ function InternList() {
                     <div className="col-2">
                       <p>
                         {item.startDate
-                          ? format(new Date(item.startDate), "d MMM yyyy", { locale: tr })
+                          ? format(new Date(item.startDate), "d MMM yyyy", {
+                              locale: tr,
+                            })
                           : ""}
                       </p>
                     </div>
                     <div className="col-2">
                       <p>
                         {item.finishDate
-                          ? format(new Date(item.finishDate), "d MMM yyyy", { locale: tr })
+                          ? format(new Date(item.finishDate), "d MMM yyyy", {
+                              locale: tr,
+                            })
                           : ""}
                       </p>
                     </div>
                     <div className="col-2">
-                      <p>{item.fileName}</p>
+                      {item.fileURL && (
+                        <a
+                          href={item.fileURL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {item.fileName}
+                        </a>
+                      )}
                     </div>
                     <div className="col-2">
                       <p>{InterStatus(item, today)}</p>
@@ -97,7 +109,9 @@ function InternList() {
                     <div className="col-2">
                       <p>
                         {item.createdAt
-                          ? format(new Date(item.createdAt), "d MMM yyyy", { locale: tr })
+                          ? format(new Date(item.createdAt), "d MMM yyyy", {
+                              locale: tr,
+                            })
                           : ""}
                       </p>
                     </div>

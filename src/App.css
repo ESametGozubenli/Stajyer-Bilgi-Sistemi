@@ -279,6 +279,18 @@ p {
   font-size: 15px;
   font-weight: 500;
 }
+.listContainer a {
+  color: #837f7f;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.listContainer a:hover {
+  color: #4e4d4d;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration:underline;
+}
 .list ul {
   padding-left: 0 !important;
 }

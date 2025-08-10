@@ -40,16 +40,19 @@ function SavePage() {
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    const newForm = {
-      ...values,
-      id: nanoid(),
-      fileName: values.file?.name || "",
-      createdAt: new Date().toISOString(),
-    };
-    setFormList([...formList, newForm]);
-    resetForm();
-    Saved();
+  const newForm = {
+    ...values,
+    id: nanoid(),
+    fileName: values.file?.name || "",
+    file: values.file, 
+    fileURL: values.file ? URL.createObjectURL(values.file) : "", 
+    createdAt: new Date().toISOString(),
   };
+  setFormList([...formList, newForm]);
+  resetForm();
+  Saved();
+};
+
 
   //alert
   const Saved = () =>
