@@ -54,7 +54,7 @@ const MonthlyChart = ({ formList }) => {
     <div className="chart-card">
       <h3 className="chart-title">Aylık Stajyer Dağılımı</h3>
       <p className="chart-subtitle">Stajyerlerin başlangıç tarihlerine göre dağılımı</p>
-      <div className="h-80">
+      <div style={{height: 320}}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart 
             data={monthlyData} 
@@ -71,7 +71,7 @@ const MonthlyChart = ({ formList }) => {
               axisLine={false}
               tickLine={false}
               tick={{ fontSize: 12, fill: '#666' }}
-              allowDecimals={false} // Ondalık sayıları engelle
+              allowDecimals={false} 
             />
             <Tooltip 
               contentStyle={{

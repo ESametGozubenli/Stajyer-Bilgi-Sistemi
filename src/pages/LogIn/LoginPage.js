@@ -20,7 +20,7 @@ function LoginPage() {
     const onSubmit = (values) =>{
         // Demo bilgileri
         if (values.userName === "hexaops" && values.password === "admin123") {
-          navigate("/dashboard"); // başka sayfaya yönlendirme
+          navigate("/dashboard"); 
         }else{
           alert("Kullanıcı adı veya şifre yanlış")
         }

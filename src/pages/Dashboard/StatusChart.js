@@ -56,6 +56,7 @@ const StatusChart = ({ data }) => {
               axisLine={false}
               tickLine={false}
               tick={{ fontSize: 12, fill: '#666' }}
+               allowDecimals={false} 
             />
             <Tooltip 
               contentStyle={{
