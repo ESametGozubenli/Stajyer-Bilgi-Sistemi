@@ -24,7 +24,7 @@ function LoginPage() {
         }else{
           alert("Kullanıcı adı veya şifre yanlış")
         }
-        console.log("Giriş Bilgileri : " ,values);
+       
     
     }
     
