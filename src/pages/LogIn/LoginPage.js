@@ -69,11 +69,7 @@ function LoginPage() {
 
           <button type="submit" className="submit-button">Giriş Yap</button>
 
-          <div className="demo-info">
-          <p>Demo giriş bilgileri:</p>
-          <p>Kullanıcı Adı: hexaops</p>
-          <p>Şifre: admin123</p>
-          </div>
+          
 
           <a href="/" class="back-link">← Stajyer Kayıt Formuna Dön</a>
     
